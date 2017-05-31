@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="container">
+
+        <div data-reactroot="" class="blue-bg lite-card">
+            {% if warning: %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>{{ warning }}</strong>
+                </div>
+            {% endif %}
+            <div class="lite-account-creation lite-card-inner">
+                <h1 class="sub">Create an account</h1>
+                <div></div>
+                <div>
+                    <p>If you already have an account, <a href="/login">log in</a>.</p>
+                </div>
+                
+                <div>
+                    <form method="POST" action="signup">
+                        <div style="position: relative;">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div>
+                                        <label for="First-name-aria-id-1" class="sr-only">First name</label>
+
+                                        <input type="text" name="inputName1" id="inputName1" autocorrect="off" autocomplete="off" spellcheck="false" class="form-control mar" placeholder="First Name" required autofocus>
+
+                                        <!-- <input type="text" class="form-control" name="firstName" maxlength="74" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="First name" aria-required="true" id="First-name-aria-id-1" style="margin-bottom: 10px;"> -->
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div>
+                                        <label for="Last-name-aria-id-2" class="sr-only">Last name</label>
+
+                                        <input type="text" name="inputName2" id="inputName2" autocorrect="off" autocomplete="off" spellcheck="false" class="form-control mar" placeholder="Last Name" required autofocus>
+
+                                        <!-- <input type="text" class="form-control" name="lastName" maxlength="74" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Last name" aria-required="true" id="Last-name-aria-id-2" style="margin-bottom: 10px;"> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-label" id="email-label-sr">Your email address will also be your username when you log in.</div>
+                            <div class="form-group">
+                                <div><label for="Email-address-aria-id-3" class="sr-only">Email address</label>
+
+                                <input type="email" name="inputEmail" id="inputEmail" class="form-control mar" maxlength="30" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Email address" required autofocus>
+                                
+                                <!-- <input type="email" class="form-control" name="email" maxlength="74" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Email address" aria-required="true" aria-describedby="email-label-sr" id="Email-address-aria-id-3" style="margin-bottom: 10px;"> -->
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div>
+                                    <label for="Password-aria-id-4" class="sr-only">Password</label>
+
+                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control mar" placeholder="Password" required>
+
+                                    <!-- <input type="password" class="form-control" name="password" maxlength="20" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Password" aria-required="true" aria-describedby="password-label-sr" id="Password-aria-id-4" style="margin-bottom: 10px;"> -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div><label for="Retype-password-aria-id-5" class="sr-only">Retype password</label><input type="password" class="form-control" name="confirmPassword" maxlength="20" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Retype password" aria-required="true" id="Retype-password-aria-id-5" style="margin-bottom: 10px;" required></div>
+                            </div>
+                            
+                            <div class="form-group input-label" style="padding: 2px 0px 5px 10px;">
+                                <div class="checkbox"><label for="checkbox_6"><input type="checkbox" name="privacy" id="checkbox_6" required><span>I understand and agree with the airlines <a target="_blank" href="/privacy">privacy policy</a> and <a target="_blank" href="/terms-and-conditions">terms and conditions</a>.</span></label></div>
+                            </div>
+                            
+                            <div class="spacer-top40 spacer-bottom20">
+                                <div><button class="btn btn-lg btn-submit btn-success" type="submit" aria-label="Create account">Create account <span class="glyphicon glyphicon-send"></span></button></div>
+                            </div>
+                            <div class="centered"><a href="/login">Already have an account? Log in.</a></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

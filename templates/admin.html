@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+{% block title %}Admin Panel{% endblock %}
+{% block content %}
+    <div class="container">
+        <div data-reactroot="" class="blue-bg lite-card">
+            <div class="lite-account-creation cen lite-card-inner">
+                <div class="">
+                    <h1>Add flight</h1>
+                    <div class="question blue-bg">
+                        <form class="form-inline" method="POST" action="/makeFlight">
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <!-- <h2>From</h2> -->
+                                    <div class="form-select ">
+                                      <select class="form-control" name="fromCity" aria-label="Dropdown Label" data-type="">
+                                        <option value="" selected="selected">From</option>
+                                        {% for c in city: %}
+                                            <option value={{ c[0] }}>{{ c[1] }}</option>
+                                        {% endfor %}
+                                      </select>
+                                      <span class="caret"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <!-- <h2>To</h2> -->
+                                    <div class="form-select ">
+                                      <select class="form-control" name="toCity" aria-label="Dropdown Label" data-type="">
+                                        <option value="" selected="selected">To</option>
+                                        {% for c in city: %}
+                                            <option value={{ c[0] }}>{{ c[1] }}</option>
+                                        {% endfor %}
+                                      </select>
+                                      <span class="caret"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row marg-top">
+                                <div class="col-sm-6">
+                                    <!-- <h2>To</h2> -->
+                                    <div class="form-select ">
+                                      <select class="form-control" name="month" aria-label="Dropdown Label" data-type="">
+                                        <option value="" selected="selected">Month</option>
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
+                                      </select>
+                                      <span class="caret"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                        <!-- <h2>To</h2> -->
+                                    <div class="form-select ">
+                                      <select class="form-control" name="day" aria-label="Dropdown Label" data-type="">
+                                        <option value="" selected="selected">Day</option>
+                                        {% for i in range(1, 32): %}
+                                            <option value={{i}}>{{i}}</option>
+                                        {% endfor %}
+                                      </select>
+                                      <span class="caret"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- <div class="col-md-3"></div> -->
+                                <div class="col-sm-12 spacer-top10">
+                                    
+                                    <div class="">
+                                        <input type="number" name="businessTicket" id="businessTicket" class="cen col-sm-5" placeholder="Business class" required>
+                                    </div>
+
+                                    <div class="col-md-2"></div>
+
+                                    <div class="">
+                                        <input type="number" name="businessPrice" id="businessPrice" class="cen col-sm-5" placeholder="Price" required>
+                                    </div>
+                                    
+                                </div>
+                                <!-- <div class="col-md-3"></div> -->
+                            </div>
+
+                            <div class="row">
+                                <!-- <div class="col-md-3"></div> -->
+                                <div class="col-sm-12 spacer-top10">
+                                    
+                                    <div class="">
+                                        <input type="number" name="economyTicket" id="economyTicket" class="cen col-sm-5" placeholder="Economy class" required>
+                                    </div>
+
+                                    <div class="col-md-2"></div>
+
+                                    <div class="">
+                                        <input type="number" name="economyPrice" id="economyPrice" class="cen col-sm-5" placeholder="Price" required>
+                                    </div>
+                                    
+                                </div>
+                                <!-- <div class="col-md-3"></div> -->
+                            </div>
+
+                            <div class="row">
+                                <div class="spacer-top10 spacer-bottom10">
+                                    <div><button class="btn btn-lg btn-submit btn-success" type="submit" aria-label="Create account">ADD <span class="glyphicon glyphicon-cloud-upload"></span></button></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="row cen">
+                <hr>
+                    <h1>Manage flights</h1>
+                    <table class="table record-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">From <span class="glyphicon glyphicon-map-marker"></span></th>
+                                <th scope="col">To <span class="glyphicon glyphicon-map-marker"></span></th>
+                                <th scope="col">Month</span></th>
+                                <th scope="col">Date</span></th>
+                                <th scope="col">Business class</th>
+                                <th scope="col">Price<span class="glyphicon glyphicon-tag"></span></th>
+                                <th scope="col">Economy class</th>
+                                <th scope="col">Price<span class="glyphicon glyphicon-tag"></span></th>
+                                <th scope="col">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for f in flight %}
+                                <tr>
+                                    {% for i in range(1, 9) %}
+                                        {% if f[i] %}
+                                            <td>{{f[i]}}</td>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <td>
+                                        <form method="POST" action="/deleteFlight">
+                                            <input class="hid" type="" name="flightId" value= {{ f[0] }}>
+                                            <button class="btn btn-green btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

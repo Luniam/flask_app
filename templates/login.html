@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+{% block source %}<script src="../static/js/login.js"></script>{% endblock %}
+{% block content %}
+    <div class="container">
+        
+        <div data-reactroot="" class="blue-bg lite-card">
+            {% if message: %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endif %}
+            <div class="lite-account-creation lite-card-inner">
+
+                <div id="errorMessage" class="hid alert alert-danger alert-dismissible" role="alert">
+                    
+                </div>
+
+                <h1 class="sub">Log in</h1>
+                <div></div>
+                <div>
+                    <p>If you do not have an account, <a href="/register">register.</a>.</p>
+                </div>
+                
+                <div>
+                    <form method="POST">
+                        <div style="position: relative;">
+                            <div class="form-group">
+                                <div><label for="Email-address-aria-id-3" class="sr-only">Email address</label>
+
+                                <input type="email" name="inputEmail" id="inputEmail" class="form-control mar" maxlength="30" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Email address" required autofocus>
+                                
+                                <!-- <input type="email" class="form-control" name="email" maxlength="74" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Email address" aria-required="true" aria-describedby="email-label-sr" id="Email-address-aria-id-3" style="margin-bottom: 10px;"> -->
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div>
+                                    <label for="Password-aria-id-4" class="sr-only">Password</label>
+
+                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control mar" placeholder="Password" required>
+
+                                    <!-- <input type="password" class="form-control" name="password" maxlength="20" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Password" aria-required="true" aria-describedby="password-label-sr" id="Password-aria-id-4" style="margin-bottom: 10px;"> -->
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="spacer-top40 spacer-bottom20">
+                                <div><button id="btnlogin" class="btn btn-lg btn-submit btn-success" type="button" aria-label="Create account">Log In</button></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

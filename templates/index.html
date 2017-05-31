@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron cen lite-card-inner">
+          <h1>Available flights</h1>
+          <table class="content-table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">From <span class="glyphicon glyphicon-map-marker"></span></th>
+                        <th scope="col">To <span class="glyphicon glyphicon-map-marker"></span></th>
+                        <th scope="col">Month</span></th>
+                        <th scope="col">Date</span></th>
+                        <th scope="col">Business class</th>
+                        <th scope="col">Price<span class="glyphicon glyphicon-tag"></span></th>
+                        <th scope="col">Economy class</th>
+                        <th scope="col">Price<span class="glyphicon glyphicon-tag"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for f in flight %}
+                        <tr>
+                            {% for i in range(1, 9) %}
+                                {% if f[i] %}
+                                    <td>{{f[i]}}</td>
+                                {% else %}
+                                    <td>None</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          <p class="lead"></p>
+          {% if session.get("user") %}
+            <p><a class="btn btn-lg btn-success" href="/book" role="button">Book tickets now</a></p>
+          {% else %}
+            <p><a class="btn btn-lg btn-success" href="/register" role="button">Register today to book tickets</a></p>
+          {% endif %}
+        </div>
+    </div>
+{% endblock %}
